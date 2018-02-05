@@ -185,8 +185,8 @@ document.onkeyup = function(event) {
   
   
   if (underscoreFound === true && guessesLeft === 0) {
-    document.getElementById("teamImage").src = "assets/images/lose.jpg";
-    document.getElementById("teamImage").style.visibility = "visible";
+    document.getElementById("diseaseImage").src = "assets/disease/diseasetent.jpg";
+    document.getElementById("diseaseImage").style.visibility = "visible";
     document.getElementById("result").innerHTML =
       "You've chosen the wrong disease. The disease was" +
       diseaseChosen +
