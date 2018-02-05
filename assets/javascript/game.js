@@ -79,7 +79,9 @@ function gameBegin() {
 function gethangmanWord(){
   //generates random index
   var randomIndex = Math.floor(Math.random * hangmanWordBank.length);
-  // sets handman word = random word from wordbank
+  var hiddenAnswer = hangmanWordBank[i].word;
+  
+  // sets hangman word = random word from wordbank
   var hiddenAnswer = hangmanWordBank[i].word;
 }
 
