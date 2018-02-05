@@ -1,35 +1,35 @@
 var hangmanWordBank = [
   {word: "Stroke", src: "./assets/images/stroke.jpg"},
-  {word: "Diabetes", src: "../images/diabetes.jpg"},
-  {word: "Alzheimer", src: "../images/alzeheimer.jpg"},
-  {word: "Arthritis", src: "../images/arthritis.jpg"},
-  {word: "Common Cold", src: "../images/commoncold.jpg"},
-  {word: "Cancer", src: "../images/cancer.jpg"},
-  {word: "Yaws", src: "../images/yaws.jpg"},
-  {word: "Diarrheal Diseases", src: "../images/diarrheal.jpg"},
-  {word: "Tuberculosis", src: "../images/Tuberculosis.jpg"},
-  {word: "Alcoholism", src: "../images/alcoholism.jpg"},
-  {word: "Avian Influenza", src: "../images/bird-flu.jpg"},
-  {word: "Chicken Pox", src: "../images/chickenpox.jpg"},
-  {word: "Botulism", src: "../images/botulism.jpg"},
-  {word: "Malaria", src: "../images/malaria.jpg"},
-  {word: "tapeworm", src: "../images/tapeworm.jpg"},
-  {word: "flesh eating bacteria", src: "../images/flesheatingbacteria.jpg"},
-  {word: "Gout", src: "../images/gout.jpg"},
-  {word: "Hot Tub Rash", src: "../images/hottubrash.jpg"},
-  {word: "Inflammatory Bowel Disease", src: "../images/IBD.jpg"},
-  {word: "Jaundice", src: "../images/jaundice.jpg"},
-  {word: "Lupus", src: "../images/lupus.jpg"},
-  {word: "Lyme Disease", src: "../images/lymedisease.jpg"},
-  {word: "Measles", src: "../images/measels.jpg"},
-  {word: "Mumps", src: "../images/mumps.jpg"},
-  {word: "Heart Disease", src: "../images/heartdisease.jpg"},
-  {word: "Plague", src: "../images/plague.jpg"},
-  {word: "Polio", src: "../images/polio.jpg"},
-  {word: "Psoriasis", src: "../images/psoriasis.jpg"},
-  {word: "Rabies", src: "../images/rabies.jpg"},
-  {word: "Smallpox", src: "../images/smallpox.jpg"},
-  {word: "Dracunculiasis" src: "../images/dracunculiasis.jpg"},
+  {word: "Diabetes", src: "./assets/images/diabetes.jpg"},
+  {word: "Alzheimer", src: "./assets/images/alzeheimer.jpg"},
+  {word: "Arthritis", src: "./assets/images/arthritis.jpg"},
+  {word: "Common Cold", src: "./assets/images/commoncold.jpg"},
+  {word: "Cancer", src: "./assets/images/cancer.jpg"},
+  {word: "Yaws", src: "./assets/images/yaws.jpg"},
+  {word: "Diarrheal Diseases", src: "./assets/images/diarrheal.jpg"},
+  {word: "Tuberculosis", src: "./assets/images/Tuberculosis.jpg"},
+  {word: "Alcoholism", src: "./assets/images/alcoholism.jpg"},
+  {word: "Avian Influenza", src: "./assets/images/bird-flu.jpg"},
+  {word: "Chicken Pox", src: "./assets/images/chickenpox.jpg"},
+  {word: "Botulism", src: "./assets/images/botulism.jpg"},
+  {word: "Malaria", src: "./assets/images/malaria.jpg"},
+  {word: "tapeworm", src: "./assets/images/tapeworm.jpg"},
+  {word: "flesh eating bacteria", src: "./assets/images/flesheatingbacteria.jpg"},
+  {word: "Gout", src: "./assets/images/gout.jpg"},
+  {word: "Hot Tub Rash", src: "./assets/images/hottubrash.jpg"},
+  {word: "Inflammatory Bowel Disease", src: "./assets/images/IBD.jpg"},
+  {word: "Jaundice", src: "./assets/images/jaundice.jpg"},
+  {word: "Lupus", src: "./assets/images/lupus.jpg"},
+  {word: "Lyme Disease", src: "./assets/images/lymedisease.jpg"},
+  {word: "Measles", src: "./assets/images/measels.jpg"},
+  {word: "Mumps", src: "./assets/images/mumps.jpg"},
+  {word: "Heart Disease", src: "./assets/images/heartdisease.jpg"},
+  {word: "Plague", src: "./assets/images/plague.jpg"},
+  {word: "Polio", src: "./assets/images/polio.jpg"},
+  {word: "Psoriasis", src: "./assets/images/psoriasis.jpg"},
+  {word: "Rabies", src: "./assets/images/rabies.jpg"},
+  {word: "Smallpox", src: "./assets/images/smallpox.jpg"},
+  {word: "Dracunculiasis", src: "./assets/images/dracunculiasis.jpg"}
 ];
 
 //how to acess 
@@ -65,8 +65,8 @@ function gameBegin() {
   lettersGuessed = [];
 
   // write initial values for wins, losses, and remaining guesses to the screen
-  document.getElementById("winCount").innerHTML = wins;
-  document.getElementById("lossCount").innerHTML = losses;
+  document.getElementById("winCount").innerHTML = winCount;
+  document.getElementById("lossCount").innerHTML = lossCount;
   document.getElementById("guessCount").innerHTML = guessesLeft;
   document.getElementById("guessedLetters").innerHTML = lettersGuessed;
 
@@ -121,7 +121,7 @@ document.onkeyup = function(event) {
 
 }
   // check to see if the letter guessed is in the answer1
-  for (var i = 0; i < diseaseChosen.length; i++) {
+  for (var i = 0; i < hangmanWordBank.length; i++) {
     var correctLetter = diseaseChosen.charAt(i);
 
     if (correctLetter < 65 || correctLetter > 90) {
@@ -166,6 +166,9 @@ document.onkeyup = function(event) {
 
   // define win conditions
 
+  function increaseWinCount() {
+  winCount++;
+}
 
   if (underscoreFound === false && guessesLeft >= 0) {
     document.getElementById("diseasePhotos").src = diseasePhotos[randomIndex];
@@ -180,7 +183,7 @@ document.onkeyup = function(event) {
 
   // define loss condition
   
-  }
+  
   if (underscoreFound === true && guessesLeft === 0) {
     document.getElementById("teamImage").src = "assets/images/lose.jpg";
     document.getElementById("teamImage").style.visibility = "visible";
@@ -192,5 +195,5 @@ document.onkeyup = function(event) {
     var audio = new Audio("assets/sounds/lose.mp3");
     audio.play();
     gameBegin();
-  }
-};
+  };
+
