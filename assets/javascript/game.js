@@ -70,8 +70,11 @@ var diseasePhotos = [
 var lettersGuessed = [];
 
 // variables for wins, losses, and remaining guesses
-var wins = 0;
-var losses = 0;
+var winCount = 0;
+var lossCount = 0;
+var guessesRemaining = 10;
+var HangmanWord = "";
+var underscoreWord = [];
 
 // global variables
 var diseaseChosen;
@@ -138,6 +141,11 @@ document.onkeyup = function(event) {
   // empty hiddenAnswer to rebuild
   hiddenAnswer = "";
 
+funtion decrementGuessesRemaining (){
+
+  guessesRemaining = guessesRemaining --;
+
+}
   // check to see if the letter guessed is in the answer1
   for (var i = 0; i < diseaseChosen.length; i++) {
     var correctLetter = diseaseChosen.charAt(i);
@@ -173,6 +181,10 @@ document.onkeyup = function(event) {
 
   // define loss conditions
 
+  function incrementLossCount() {
+    lossCount ++;
+  }
+
   var underscoreFound = false;
   for (var k = 0; k < hiddenAnswer.length; k++) {
     // if underscores remaining and no guesses left
@@ -182,6 +194,21 @@ document.onkeyup = function(event) {
   }
 
   // define win conditions
+
+  function incrementWinCount() {
+    winCount ++;
+  }
+
+
+  function didUserWin() {
+    var underscoreString = underscoreWord.join('');
+    if () {
+      return true;
+    } else {
+      return false;
+    } 
+  }
+
   if (underscoreFound === false && guessesLeft >= 0) {
     document.getElementById("diseasePhotos").src = diseasePhotos[randomIndex];
     document.getElementById("diseasePhotos").style.visibility = "visible";
@@ -194,11 +221,19 @@ document.onkeyup = function(event) {
   }
 
   // define loss condition
+  function didUserLose() {
+    if (guessesRemaining === 0) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
   if (underscoreFound === true && guessesLeft === 0) {
     document.getElementById("teamImage").src = "assets/images/lose.jpg";
     document.getElementById("teamImage").style.visibility = "visible";
     document.getElementById("result").innerHTML =
-      "You've chosen the wrong disease. The disease was the " +
+      "You've chosen the wrong disease. The disease was" +
       diseaseChosen +
       ".";
     losses++;
