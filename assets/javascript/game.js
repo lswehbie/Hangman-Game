@@ -33,36 +33,36 @@ var diseaseChoices = [
 
 // disease Photos
 var diseasePhotos = [
-"assets/images/stroke.jpg",
-"assets/images/diabetes.jpg",
-"assets/images/alzeheimer.jpg",
-"assets/images/arthritis.jpg",
-"assets/images/commoncold.jpg",
-"assets/images/cancer.jpg",
-"assets/images/yaws.jpg",
-"assets/images/diarrheal.jpg",
-"assets/images/Tuberculosis.jpg",
-"assets/images/alcoholism.jpg",
-"assets/images/bird-flu.jpg",
-"assets/images/chickenpox.jpg",
-"assets/images/botulism.jpg",
-"assets/images/malaria.jpg",
-"assets/images/tapeworm.jpg",
-"assets/images/flesheatingbacteria.jpg",
-"assets/images/gout.jpg",
-"assets/images/hottubrash.jpg",
-"assets/images/IBD.jpg",
-"assets/images/jaundice.jpg",
-"assets/images/lymedisease.jpg",
-"assets/images/measels.jpg",
-"assets/images/mumps.jpg",
-"assets/images/heartdisease.jpg",
-"assets/images/plague.jpg",
-"assets/images/polio.jpg",
-"assets/images/psoriasis.jpg",
-"assets/images/rabies.jpg",
-"assets/images/smallpox.jpg",
-"assets/images/dracunculiasis.jpg",
+"../images/stroke.jpg",
+"../images/diabetes.jpg",
+"../images/alzeheimer.jpg",
+"../images/arthritis.jpg",
+"../images/commoncold.jpg",
+"../images/cancer.jpg",
+"../images/yaws.jpg",
+"../images/diarrheal.jpg",
+"../images/Tuberculosis.jpg",
+"../images/alcoholism.jpg",
+"../images/bird-flu.jpg",
+"../images/chickenpox.jpg",
+"../images/botulism.jpg",
+"../images/malaria.jpg",
+"../images/tapeworm.jpg",
+"../images/flesheatingbacteria.jpg",
+"../images/gout.jpg",
+"../images/hottubrash.jpg",
+"../images/IBD.jpg",
+"../images/jaundice.jpg",
+"../images/lymedisease.jpg",
+"../images/measels.jpg",
+"../images/mumps.jpg",
+"../images/heartdisease.jpg",
+"../images/plague.jpg",
+"../images/polio.jpg",
+"../images/psoriasis.jpg",
+"../images/rabies.jpg",
+"../images/smallpox.jpg",
+"../images/dracunculiasis.jpg",
 ];
 
 // array for letters guessed by the user
@@ -147,7 +147,7 @@ document.onkeyup = function(event) {
   // check to see if the letter guessed is in the answer1
   for (var i = 0; i < diseaseChosen.length; i++) {
 
-    var correctLetter = teamChosen.charAt(i);
+    var correctLetter = diseaseChosen.charAt(i);
 
     if (correctLetter < 65 || correctLetter > 90) {
 
