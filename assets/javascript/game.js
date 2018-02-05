@@ -53,6 +53,8 @@ var hiddenAnswer;
 var randomIndex;
 var diseasePhotos;
 var randomIndex;
+var userChoice;
+
 
 window.onload = function() {
   document.getElementById("diseasePhotos").style.visibility = "hidden";
@@ -124,14 +126,14 @@ document.onkeyup = function(event) {
 }
   // check to see if the letter guessed is in the answer1
   for (var i = 0; i < hangmanWordBank.length; i++) {
-    var correctLetter = hangmanWordBank.charAt(i);
+    var correctLetter = hangmanWordBank[0].word.charAt(i);
 
     if (correctLetter < 65 || correctLetter > 90) {
       hiddenAnswer += "&nbsp;&nbsp;";
       continue;
     }
 
-    if (userChoice === diseaseChosen.charAt(i)) {
+    if (userChoice === hangmanWordBank[0].word.charAt(i)) {
       hiddenAnswer += userChoice + " ";
     } else {
       // User gave wrong letter
@@ -153,7 +155,7 @@ document.onkeyup = function(event) {
     }
   }
 
-  document.getElementById("gameWord").innerHTML = hiddenAnswer;
+  document.getElementById("hangmanWordBank").innerHTML = hiddenAnswer;
 
   // define loss conditions
 
@@ -176,7 +178,7 @@ document.onkeyup = function(event) {
     document.getElementById("diseasePhotos").src = diseasePhotos[randomIndex];
     document.getElementById("diseasePhotos").style.visibility = "visible";
     document.getElementById("result").innerHTML =
-      "The disease you've chosen " + diseaseChosen + ".";
+      "The disease you've chosen " + hangmanWordBank + ".";
     wins++;
     var audio = new Audio("assets/sounds/applaud.mp3");
     audio.play();
@@ -187,11 +189,11 @@ document.onkeyup = function(event) {
   
   
   if (underscoreFound === true && guessesLeft === 0) {
-    document.getElementById("diseaseImage").src = "./assets/images/diseasetent.jpg";
-    document.getElementById("diseaseImage").style.visibility = "visible";
+    document.getElementById("diseasePhotos").src = "./assets/images/diseasetent.jpg";
+    document.getElementById("diseasePhotos").style.visibility = "visible";
     document.getElementById("result").innerHTML =
       "You've chosen the wrong disease. The disease was" +
-      diseaseChosen +
+     hangmanWordBank +
       ".";
     losses++;
     var audio = new Audio("assets/sounds/lose.mp3");
