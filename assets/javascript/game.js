@@ -81,8 +81,8 @@ function gethangmanWord(){
   var hiddenAnswer = hangmanWordBank[i].word;
 }
 
-  randomIndex = Math.floor(Math.random() * diseaseChoices.length);
-  diseaseChosen = diseaseChoices[randomIndex].toLowerCase();
+  randomIndex = Math.floor(Math.random() * hangmanWordBank.length);
+  hangmanWordBank = hangmanWordBank[randomIndex].toLowerCase();
 
   guessesLeft = diseaseChosen.length;
   // create a variable to store the word in underscores
