@@ -47,9 +47,11 @@ var lossCount = 0;
 var guessesRemaining = 10;
 
 // global variables
-var diseaseChosen;
+var hangmanWordBank;
 var guessesLeft;
 var hiddenAnswer;
+var randomIndex;
+var diseasePhotos;
 var randomIndex;
 
 window.onload = function() {
@@ -122,7 +124,7 @@ document.onkeyup = function(event) {
 }
   // check to see if the letter guessed is in the answer1
   for (var i = 0; i < hangmanWordBank.length; i++) {
-    var correctLetter = diseaseChosen.charAt(i);
+    var correctLetter = hangmanWordBank.charAt(i);
 
     if (correctLetter < 65 || correctLetter > 90) {
       hiddenAnswer += "&nbsp;&nbsp;";
@@ -185,7 +187,7 @@ document.onkeyup = function(event) {
   
   
   if (underscoreFound === true && guessesLeft === 0) {
-    document.getElementById("diseaseImage").src = "assets/disease/diseasetent.jpg";
+    document.getElementById("diseaseImage").src = "./assets/images/diseasetent.jpg";
     document.getElementById("diseaseImage").style.visibility = "visible";
     document.getElementById("result").innerHTML =
       "You've chosen the wrong disease. The disease was" +
