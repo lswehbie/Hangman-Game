@@ -73,8 +73,6 @@ var lettersGuessed = [];
 var winCount = 0;
 var lossCount = 0;
 var guessesRemaining = 10;
-var HangmanWord = "";
-var underscoreWord = [];
 
 // global variables
 var diseaseChosen;
@@ -141,10 +139,6 @@ document.onkeyup = function(event) {
   // empty hiddenAnswer to rebuild
   hiddenAnswer = "";
 
-funtion decrementGuessesRemaining (){
-
-  guessesRemaining = guessesRemaining --;
-
 }
   // check to see if the letter guessed is in the answer1
   for (var i = 0; i < diseaseChosen.length; i++) {
@@ -181,10 +175,7 @@ funtion decrementGuessesRemaining (){
 
   // define loss conditions
 
-  function incrementLossCount() {
-    lossCount ++;
-  }
-
+ 
   var underscoreFound = false;
   for (var k = 0; k < hiddenAnswer.length; k++) {
     // if underscores remaining and no guesses left
@@ -195,19 +186,6 @@ funtion decrementGuessesRemaining (){
 
   // define win conditions
 
-  function incrementWinCount() {
-    winCount ++;
-  }
-
-
-  function didUserWin() {
-    var underscoreString = underscoreWord.join('');
-    if () {
-      return true;
-    } else {
-      return false;
-    } 
-  }
 
   if (underscoreFound === false && guessesLeft >= 0) {
     document.getElementById("diseasePhotos").src = diseasePhotos[randomIndex];
@@ -221,13 +199,7 @@ funtion decrementGuessesRemaining (){
   }
 
   // define loss condition
-  function didUserLose() {
-    if (guessesRemaining === 0) {
-      return true;
-    } else {
-      return false;
-    }
-
+  
   }
   if (underscoreFound === true && guessesLeft === 0) {
     document.getElementById("teamImage").src = "assets/images/lose.jpg";
