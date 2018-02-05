@@ -71,10 +71,11 @@ var lettersGuessed = [];
 // variables for wins, losses, and remaining guesses
 var wins = 0;
 var losses = 0;
-var guessesLeft = 15;
+
 
 // global variables
 var diseaseChosen;
+var guessesLeft
 var hiddenAnswer;
 var randomIndex;
 
@@ -90,7 +91,7 @@ window.onload = function() {
 function gameBegin() {
 
   // reset number of guesses and letters guessed array
-  guessesLeft = 15;
+  
   lettersGuessed = [];
 
   // write initial values for wins, losses, and remaining guesses to the screen
@@ -102,12 +103,13 @@ function gameBegin() {
 
   // choose a team from the array
   randomIndex = Math.floor(Math.random() * diseaseChoices.length);
-  diseaseChosen = diseaseChoices[randomIndex];
+  diseaseChosen = diseaseChoices[randomIndex].toLowerCase();
   
+  guessesLeft = diseaseChosen.length;
   // create a variable to store the word in underscores
   hiddenAnswer = "";
 
-  // replace team name with underscores for game
+  // replace disease name with underscores for game
   for (var i = 0; i < diseaseChosen.length; i++) {
     
     // replace only letters, not spaces
@@ -126,9 +128,9 @@ function gameBegin() {
 document.onkeyup = function(event) {
 
   // determine if the key pressed was a letter
-  if (event.which < 65 || event.which > 90) {
-    return;
-  }
+  //if (event.which < 65 || event.which > 90) {
+    //return;
+  //}
 
   // store the letter
   var userChoice = event.key.toLowerCase();
