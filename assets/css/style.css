@@ -20,9 +20,9 @@
 	text-align: center;
 }
 
-/* background */
+
 html {
-	background-image: url("assets/images/diseasetent.jpg");
+	background-image: url("../images/diseasetent.jpg");
 }
 
 .logo {
@@ -34,7 +34,7 @@ html {
 }
 
 
-/* fonts */
+
 body, p {
 	font-family: 'Georgia', Times, Times New Roman, serif;
 }
@@ -53,7 +53,7 @@ body, p {
 	font-family: 'Georgia', Times, Times New Roman, serif;
 }
 
-/* header */
+
 
 .header {
 	width: 60%;
@@ -65,12 +65,12 @@ body, p {
 	border: 3px solid #000000;
 }
 
-/* font */
+
 body {
 	font-family: 'Georgia', Times, Times New Roman, serif;
 }
 
-/* stat row */
+
 .statRow {
 	width: 100%;
 }
@@ -86,7 +86,7 @@ body {
 	height: 100px;
 }
 
-/* game row*/
+
 .gameRow {
 	font-size: 2.0em;
 	text-align: center;
@@ -105,8 +105,21 @@ body {
 
 #gameWord {
 	margin-top: 100px;
+
 }
 
+.Disease {
+	font-size: 30pt;
+	text-align: center;
+	padding: 20px 0;
+	margin: 10px 0;
+	line-height: 200%;
+}
+
+
+}
 #diseaseImage {
 	margin-top: 50px;
+	float: right;
+
 }
