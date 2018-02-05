@@ -1,70 +1,42 @@
-var diseaseChoices = [
-  "Stroke",
-  "Diabetes",
-  "Alzheimer",
-  "Arthritis",
-  "Common Cold",
-  "Cancer",
-  "Yaws",
-  "Diarrheal Diseases",
-  "Tuberculosis",
-  "Alcoholism",
-  "Avian Influenza",
-  "Chicken Pox",
-  "Botulism",
-  "Malaria",
-  "tapeworm",
-  "flesh eating bacteria",
-  "Gout",
-  "Hot Tub Rash",
-  "Inflammatory Bowel Disease",
-  "Jaundice",
-  "Lupus",
-  "Lyme Disease",
-  "Measles",
-  "Mumps",
-  "Heart Disease",
-  "Plague",
-  "Polio",
-  "Psoriasis",
-  "Rabies",
-  "Smallpox",
-  "Dracunculiasis"
+var hangmanWordBank = [
+  {word: "Stroke", src: "./assets/images/stroke.jpg"},
+  {word: "Diabetes", src: "../images/diabetes.jpg"},
+  {word: "Alzheimer", src: "../images/alzeheimer.jpg"},
+  {word: "Arthritis", src: "../images/arthritis.jpg"},
+  {word: "Common Cold", src: "../images/commoncold.jpg"},
+  {word: "Cancer", src: "../images/cancer.jpg"},
+  {word: "Yaws", src: "../images/yaws.jpg"},
+  {word: "Diarrheal Diseases", src: "../images/diarrheal.jpg"},
+  {word: "Tuberculosis", src: "../images/Tuberculosis.jpg"},
+  {word: "Alcoholism", src: "../images/alcoholism.jpg"},
+  {word: "Avian Influenza", src: "../images/bird-flu.jpg"},
+  {word: "Chicken Pox", src: "../images/chickenpox.jpg"},
+  {word: "Botulism", src: "../images/botulism.jpg"},
+  {word: "Malaria", src: "../images/malaria.jpg"},
+  {word: "tapeworm", src: "../images/tapeworm.jpg"},
+  {word: "flesh eating bacteria", src: "../images/flesheatingbacteria.jpg"},
+  {word: "Gout", src: "../images/gout.jpg"},
+  {word: "Hot Tub Rash", src: "../images/hottubrash.jpg"},
+  {word: "Inflammatory Bowel Disease", src: "../images/IBD.jpg"},
+  {word: "Jaundice", src: "../images/jaundice.jpg"},
+  {word: "Lupus", src: "../images/lupus.jpg"},
+  {word: "Lyme Disease", src: "../images/lymedisease.jpg"},
+  {word: "Measles", src: "../images/measels.jpg"},
+  {word: "Mumps", src: "../images/mumps.jpg"},
+  {word: "Heart Disease", src: "../images/heartdisease.jpg"},
+  {word: "Plague", src: "../images/plague.jpg"},
+  {word: "Polio", src: "../images/polio.jpg"},
+  {word: "Psoriasis", src: "../images/psoriasis.jpg"},
+  {word: "Rabies", src: "../images/rabies.jpg"},
+  {word: "Smallpox", src: "../images/smallpox.jpg"},
+  {word: "Dracunculiasis" src: "../images/dracunculiasis.jpg"},
 ];
 
-// disease Photos
-var diseasePhotos = [
-  "../images/stroke.jpg",
-  "../images/diabetes.jpg",
-  "../images/alzeheimer.jpg",
-  "../images/arthritis.jpg",
-  "../images/commoncold.jpg",
-  "../images/cancer.jpg",
-  "../images/yaws.jpg",
-  "../images/diarrheal.jpg",
-  "../images/Tuberculosis.jpg",
-  "../images/alcoholism.jpg",
-  "../images/bird-flu.jpg",
-  "../images/chickenpox.jpg",
-  "../images/botulism.jpg",
-  "../images/malaria.jpg",
-  "../images/tapeworm.jpg",
-  "../images/flesheatingbacteria.jpg",
-  "../images/gout.jpg",
-  "../images/hottubrash.jpg",
-  "../images/IBD.jpg",
-  "../images/jaundice.jpg",
-  "../images/lymedisease.jpg",
-  "../images/measels.jpg",
-  "../images/mumps.jpg",
-  "../images/heartdisease.jpg",
-  "../images/plague.jpg",
-  "../images/polio.jpg",
-  "../images/psoriasis.jpg",
-  "../images/rabies.jpg",
-  "../images/smallpox.jpg",
-  "../images/dracunculiasis.jpg"
-];
+//how to acess 
+
+hangmanWordBank[0];
+hangmanWordBank[0].word;
+hangmanWordBank[0].src;
 
 // array for letters guessed by the user
 var lettersGuessed = [];
@@ -83,7 +55,7 @@ var randomIndex;
 window.onload = function() {
   document.getElementById("diseasePhotos").style.visibility = "hidden";
 
-  // call gamebegin to start game
+  // gamebegin to start game
   gameBegin();
 };
 
@@ -98,7 +70,15 @@ function gameBegin() {
   document.getElementById("guessCount").innerHTML = guessesLeft;
   document.getElementById("guessedLetters").innerHTML = lettersGuessed;
 
-  // choose a team from the array
+  // choose a disease from the array
+
+function gethangmanWord(){
+  //generates random index
+  var randomIndex = Math.floor(Math.random * hangmanWordBank.length);
+  // sets handman word = random word from wordbank
+  var hiddenAnswer = hangmanWordBank[i].word;
+}
+
   randomIndex = Math.floor(Math.random() * diseaseChoices.length);
   diseaseChosen = diseaseChoices[randomIndex].toLowerCase();
 
