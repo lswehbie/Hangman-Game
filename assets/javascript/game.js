@@ -107,42 +107,40 @@ function gameBegin() {
   
   guessesLeft = diseaseChosen.length;
   // create a variable to store the word in underscores
-  hiddenAnswer = "";
+ 
+  hiddenWord = diseaseChosen.split("")
+  hiddenWord = hiddenWord.filter(function(str) {     
+    return /\S/.test(str); });
 
-  // replace disease name with underscores for game
-  for (var i = 0; i < diseaseChosen.length; i++) {
-    
-    // replace only letters, not spaces
-    if (diseaseChosen.charAt(i) !== " ") {
 
-      hiddenAnswer += "_ ";
 
-    } else {
-      hiddenAnswer += "&nbsp;&nbsp;";
-    }
-  }
-
-  document.getElementById("gameWord").innerHTML = hiddenAnswer;
+ document.getElementById("gameWord").innerHTML = hiddenAnswer;
 }
 
 document.onkeyup = function(event) {
 
-  // determine if the key pressed was a letter
-  //if (event.which < 65 || event.which > 90) {
-    //return;
-  //}
+
+  if (event.keyCode >= 65 && event.keyCode <= 90) {   
+    return 
+   // Alphabet upper case
+  }
+  else if (event.keyCode >= 97 && event.keyCode <= 122) { 
+   return   
+   // Alphabet lower case
+  }
+
 
   // store the letter
+
+while(guessesLeft <= diseaseChosen.length) {
+
   var userChoice = event.key.toLowerCase();
   
   // push userChoice into the array of letters guessed by the user
   lettersGuessed.push(userChoice);
   document.getElementById("guessedLetters").innerHTML = lettersGuessed;
 
-  // decrease guessesLeft by 1
-  guessesLeft--;
-  document.getElementById("guessCount").innerHTML = guessesLeft;
-
+  
   // empty hiddenAnswer to rebuild
   hiddenAnswer = "";
 
@@ -182,7 +180,11 @@ document.onkeyup = function(event) {
   }
 
   document.getElementById("gameWord").innerHTML = hiddenAnswer;
+  // decrease guessesLeft by 1
+  guessesLeft--;
+  document.getElementById("guessCount").innerHTML = guessesLeft;
 
+}
   // define loss conditions
 
   var underscoreFound = false;
