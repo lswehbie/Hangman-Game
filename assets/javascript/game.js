@@ -44,7 +44,6 @@ var guessesRemaining = 10;
 
 // GV
 var hangmanWordBank;
-var guessesLeft;
 var hiddenAnswer;
 var randomIndex;
 var diseasePhotos;
@@ -52,8 +51,10 @@ var randomIndex;
 var userChoice;
 var answer;
 
+
 var randomIndex = Math.floor(Math.random() * hangmanWordBank.length);
 var answer = hangmanWordBank[randomIndex].word;
+var hiddenAnswer = answer.split('');
 
 window.onload = function() {
   gameBegin();
@@ -62,14 +63,10 @@ window.onload = function() {
 function gameBegin() {
   document.getElementById('winCount').innerHTML = winCount;
   document.getElementById('lossCount').innerHTML = lossCount;
-  document.getElementById('guessCount').innerHTML = guessesLeft;
+  document.getElementById('guessCount').innerHTML = guessesRemaining;
   document.getElementById('guessedLetters').innerHTML = lettersGuessed;
 
-  var hiddenAnswer = hangmanWordBank[randomIndex].word;
 
-  guessesLeft = hangmanWordBank.length;
-
-  hiddenAnswer = hiddenAnswer.split('');
   for (var j = 0; j < hiddenAnswer.length; j++) {
     if (hiddenAnswer[j] !== ' ') {
       hiddenAnswer[j] = '_';
@@ -77,8 +74,6 @@ function gameBegin() {
       hiddenAnswer[j] = ' ';
     }
   }
-  
-  hiddenAnswer = hiddenAnswer.join('');
 
   document.getElementById('gameWord').innerHTML = hiddenAnswer;
   document.onkeyup = function(event) {
@@ -95,22 +90,35 @@ function gameBegin() {
     document.getElementById('guessedLetters').innerHTML = lettersGuessed;
 
     
-    guessesLeft--;
-    document.getElementById('guessCount').innerHTML = guessesLeft;
+    guessesRemaining--;
+    document.getElementById('guessCount').innerHTML = guessesRemaining;
 
     
-    for (var i = 0; i < answer.length; i++) {
-      var correctLetter = answer.charAt(i);
+    /*for (var i = 0; i < answer.length; i++) {
+      var correctLetter = answer.charAt(i);*/
+
+      for (var i = 0; i < answer.length; i++) {
+
+
+        if (userChoice === answer[i]) {
+
+          console.log(`User guess of ${userChoice} was correct at index ${i}`);
+
+          hiddenAnswer[i] = userChoice;
+        }
+      }
+
 
      
-
-      if (userChoice === answer.charAt(i)) {
+      if (answer.indexOf(userChoice) !== -1) {
+      // if (userChoice === answer.charAt(i)) {
+       console.log(correctLetter); 
         hiddenAnswer = hiddenAnswer.split('');
         
         hiddenAnswer[i] = userChoice;
         hiddenAnswer = hiddenAnswer.join('');
       } else {
-        
+        console.log(correctLetter);
         var found = false;
         for (var j = 0; j < lettersGuessed.length; j++) {
           if (correctLetter === lettersGuessed[j]) {
@@ -136,7 +144,7 @@ function gameBegin() {
       winCount++;
     }
 
-    if (underscoreFound === false && guessesLeft >= 0) {
+    if (underscoreFound === false && guessesRemaining === 0) {
       document.getElementById('diseasePhotos').src = diseasePhotos[randomIndex];
       document.getElementById('diseasePhotos').style.visibility = 'visible';
       document.getElementById('result').innerHTML = "The disease you've chosen " + hangmanWordBank + '.';
@@ -147,15 +155,15 @@ function gameBegin() {
     }
 
 
-    if (underscoreFound === true && guessesLeft === 0) {
+    if (underscoreFound === true && guessesRemaining === 0) {
       document.getElementById('diseasePhotos').src = '../images/diseasetent.jpg';
       document.getElementById('diseasePhotos').style.visibility = 'visible';
       document.getElementById('result').innerHTML =
-        "You've chosen the wrong disease. The disease was" + hangmanWordBank + '.';
+        "You've chosen the wrong disease. The disease was " + hangmanWordBank[0].word + '.';
       losses++;
       var audio = new Audio('assets/sounds/lose.mp3');
       audio.play();
       gameBegin();
     }
   };
-}
+
