@@ -42,7 +42,6 @@ var winCount = 0;
 var lossCount = 0;
 var guessesRemaining = 10;
 
-// GV
 var hangmanWordBank;
 var guessesLeft;
 var hiddenAnswer;
@@ -50,10 +49,9 @@ var randomIndex;
 var diseasePhotos;
 var randomIndex;
 var userChoice;
+var answer;
 
 window.onload = function() {
-
-
   gameBegin();
 };
 
@@ -65,24 +63,30 @@ function gameBegin() {
 
   var randomIndex = Math.floor(Math.random() * hangmanWordBank.length);
 
+  var answer = hangmanWordBank[randomIndex].word;
+
   var hiddenAnswer = hangmanWordBank[randomIndex].word;
 
   guessesLeft = hangmanWordBank.length;
 
-  hiddenAnswer = "";
-
-  for (var i = 0; i < hiddenAnswer.length; i++) {
-    if (hiddenAnswer.charAt(i) !== " ") {
-      hiddenAnswer[i] = "_ ";
+  hiddenAnswer = hiddenAnswer.split("");
+  for (var j = 0; j < hiddenAnswer.length; j++) {
+    if (hiddenAnswer[j] !== "&nbsp;&nbsp;") {
+      hiddenAnswer[j] = "_  ";
     } else {
-      hiddenAnswer += "  ";
+      hiddenAnswer[j] = "&nbsp;&nbsp;&nbsp;&nbsp;";
     }
   }
+  hiddenAnswer = hiddenAnswer.join("");
 
   document.getElementById("gameWord").innerHTML = hiddenAnswer;
 }
 
 document.onkeyup = function(event) {
+  if (event.which < 65 || event.which > 90) {
+    return;
+  }
+
   var userChoice = event.key.toLowerCase();
 
   lettersGuessed.push(userChoice);
@@ -93,14 +97,14 @@ document.onkeyup = function(event) {
 };
 
 for (var i = 0; i < hangmanWordBank.length; i++) {
-  var correctLetter = hangmanWordBank[0].word.charAt(i);
+  var correctLetter = answer.charAt(i);
 
   if (correctLetter < 65 || correctLetter > 90) {
-    hiddenAnswer += " ";
+    hiddenAnswer += "  ";
     continue;
   }
 
-  if (userChoice === hangmanWordBank[0].word.charAt(i)) {
+  if (userChoice === answer.charAt(i)) {
     hiddenAnswer += userChoice + " ";
   } else {
     var found = false;
@@ -111,6 +115,8 @@ for (var i = 0; i < hangmanWordBank.length; i++) {
         break;
       }
     }
+    
+debugger;
 
     if (found === false) {
       hiddenAnswer += "_ ";
@@ -141,6 +147,7 @@ if (underscoreFound === false && guessesLeft >= 0) {
 }
 
 if (underscoreFound === true && guessesLeft === 0) {
+  document.getElementById("diseasePhotos").src = "../images/diseasetent.jpg";
   document.getElementById("diseasePhotos").style.visibility = "visible";
   document.getElementById("result").innerHTML =
     "You've chosen the wrong disease. The disease was" + hangmanWordBank + ".";
